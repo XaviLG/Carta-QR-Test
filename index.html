@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Restaurante Sabores — Carta</title>
+  <meta name="description" content="Carta sencilla y responsive para restaurante." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🍽️</text></svg>">
+  <style>
+    :root{
+      --bg:#0b0b0c; --panel:#111215; --card:#17181c; --muted:#a0a3aa; --text:#f3f4f6; --accent:#22c55e; --accent-2:#06b6d4;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif}
+    a{color:inherit}
+    .container{max-width:1000px;margin:auto;padding:20px}
+    header{position:sticky;top:0;z-index:10;background:linear-gradient(180deg,rgba(11,11,12,.9),rgba(11,11,12,.6) 70%,rgba(11,11,12,0));backdrop-filter:saturate(140%) blur(8px);}
+    .nav{display:flex;align-items:center;gap:16px;justify-content:space-between;padding:14px 20px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+    .brand .dot{width:10px;height:10px;border-radius:999px;background:linear-gradient(45deg,var(--accent),var(--accent-2))}
+    .nav a{padding:8px 12px;border-radius:999px;text-decoration:none;opacity:.9}
+    .nav a:hover{background:#ffffff12;opacity:1}
+
+    .hero{padding:34px 20px}
+    .hero h1{font-size:clamp(28px,4vw,42px);margin:0 0 6px}
+    .hero p{margin:0;color:var(--muted)}
+
+    .panel{background:var(--panel);border:1px solid #ffffff14;border-radius:18px;padding:16px}
+
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+    .col-8{grid-column:span 8}
+    .col-4{grid-column:span 4}
+    @media (max-width:900px){.col-8,.col-4{grid-column:1/-1}}
+
+    .section-title{display:flex;align-items:center;justify-content:space-between;margin:8px 0 12px}
+    .section-title h2{margin:0;font-size:clamp(20px,3vw,28px)}
+
+    .chips{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{background:#ffffff10;border:1px solid #ffffff14;color:#fff;padding:8px 12px;border-radius:999px;font-size:.95rem;cursor:pointer}
+    .chip[aria-pressed="true"]{background:linear-gradient(45deg,var(--accent),var(--accent-2));border-color:transparent}
+
+    .items{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+    .card{background:var(--card);border:1px solid #ffffff14;border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:6px}
+    .card h3{margin:0;font-size:1.05rem}
+    .price{margin-left:auto;font-weight:700;white-space:nowrap}
+    .desc{color:var(--muted);font-size:.95rem}
+    .badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+    .badge{font-size:.8rem;padding:4px 8px;border-radius:999px;border:1px solid #ffffff1f;background:#ffffff0d}
+
+    .aside{display:grid;gap:12px}
+    .info-list{display:grid;gap:8px}
+    .info{display:flex;gap:10px;align-items:flex-start;background:var(--card);border:1px solid #ffffff14;border-radius:14px;padding:12px}
+    .info strong{display:block}
+
+    .cta{position:fixed;right:16px;bottom:16px;z-index:20}
+    .cta a{display:inline-flex;gap:8px;align-items:center;background:linear-gradient(45deg,var(--accent),var(--accent-2));color:#0b0b0c;padding:12px 16px;border-radius:999px;font-weight:700;text-decoration:none;border:0}
+
+    footer{opacity:.7;text-align:center;padding:26px 0}
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav container">
+      <div class="brand"><span class="dot"></span> Rest. Sabores</div>
+      <div class="links">
+        <a href="#carta">Carta</a>
+        <a href="#info">Información</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero panel">
+      <h1>Carta</h1>
+      <p>Comida casera con ingredientes frescos. Actualiza este texto con tu descripción.</p>
+    </section>
+
+    <section id="carta" class="panel" style="margin-top:14px">
+      <div class="section-title">
+        <h2>Nuestra carta</h2>
+        <div class="chips" role="tablist" aria-label="Categorías de carta">
+          <button class="chip" role="tab" aria-pressed="true" data-filter="all">Todo</button>
+          <button class="chip" role="tab" data-filter="entrantes">Entrantes</button>
+          <button class="chip" role="tab" data-filter="principales">Principales</button>
+          <button class="chip" role="tab" data-filter="postres">Postres</button>
+          <button class="chip" role="tab" data-filter="bebidas">Bebidas</button>
+        </div>
+      </div>
+
+      <div class="items" id="items">
+        <!-- DUPLICA ESTAS TARJETAS Y EDITA NOMBRE / DESCRIPCIÓN / PRECIO / CATEGORÍAS -->
+        <article class="card" data-cats="entrantes,vegetariano">
+          <div style="display:flex;gap:8px;align-items:baseline">
+            <h3>Ensalada de la casa</h3>
+            <span class="price">8,50 €</span>
+          </div>
+          <p class="desc">Mezclum, tomate, queso fresco, vinagreta de limón.</p>
+          <div class="badges">
+            <span class="badge">Vegetariano</span>
+            <span class="badge">Sin gluten</span>
+          </div>
+        </article>
+
+        <article class="card" data-cats="principales,carne">
+          <div style="display:flex;gap:8px;align-items:baseline">
+            <h3>Pollo a la plancha con arroz</h3>
+            <span class="price">11,90 €</span>
+          </div>
+          <p class="desc">Pechuga marinada, arroz jazmín y verduras salteadas.</p>
+          <div class="badges">
+            <span class="badge">Proteico</span>
+          </div>
+        </article>
+
+        <article class="card" data-cats="principales,pescado">
+          <div style="display:flex;gap:8px;align-items:baseline">
+            <h3>Salmón al horno</h3>
+            <span class="price">14,50 €</span>
+          </div>
+          <p class="desc">Con patatas asadas y salsa de yogur y eneldo.</p>
+          <div class="badges">
+            <span class="badge">Sin gluten</span>
+          </div>
+        </article>
+
+        <article class="card" data-cats="postres">
+          <div style="display:flex;gap:8px;align-items:baseline">
+            <h3>Cheesecake casero</h3>
+            <span class="price">5,50 €</span>
+          </div>
+          <p class="desc">Base de galleta y coulis de frutos rojos.</p>
+        </article>
+
+        <article class="card" data-cats="bebidas">
+          <div style="display:flex;gap:8px;align-items:baseline">
+            <h3>Limonada natural</h3>
+            <span class="price">2,50 €</span>
+          </div>
+          <p class="desc">Limón exprimido, azúcar y agua fría.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="info" class="grid" style="margin-top:14px">
+      <div class="col-8">
+        <div class="panel">
+          <h2 style="margin:6px 0 12px">Sobre nosotros</h2>
+          <p style="margin-top:0;color:var(--muted)">Reemplaza este texto por la historia del restaurante, alergias, política de reservas, etc.</p>
+        </div>
+      </div>
+      <aside class="col-4 aside">
+        <div class="info">
+          <div>🕒</div>
+          <div>
+            <strong>Horario</strong>
+            <div>Lun–Jue: 13:00–16:00 / 20:00–23:00<br>Vie–Dom: 13:00–16:30 / 20:00–23:30</div>
+          </div>
+        </div>
+        <div class="info">
+          <div>📍</div>
+          <div>
+            <strong>Dirección</strong>
+            <div>Calle Ejemplo 123, Ciudad</div>
+            <a href="#" id="mapsLink">Ver en Google Maps</a>
+          </div>
+        </div>
+        <div class="info" id="contacto">
+          <div>☎️</div>
+          <div>
+            <strong>Contacto</strong>
+            <div><a href="tel:+34900111222">+34 900 111 222</a></div>
+            <div><a href="mailto:reservas@restaurante.com">reservas@restaurante.com</a></div>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <div class="cta">
+    <a href="tel:+34900111222" aria-label="Llamar para reservar">📞 Reservar</a>
+  </div>
+
+  <footer class="container">
+    © <span id="year"></span> Rest. Sabores · Actualiza con tu nombre comercial
+  </footer>
+
+  <script>
+    // Filtro por categoría
+    const chips = document.querySelectorAll('.chip');
+    const items = document.querySelectorAll('.card');
+    chips.forEach(chip=>{
+      chip.addEventListener('click',()=>{
+        chips.forEach(c=>c.setAttribute('aria-pressed','false'));
+        chip.setAttribute('aria-pressed','true');
+        const f = chip.dataset.filter;
+        items.forEach(it=>{
+          const show = f==='all' || it.dataset.cats.split(',').includes(f);
+          it.style.display = show? 'flex':'none';
+        });
+      });
+    });
+
+    // Año automático en el footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Enlace a Maps si hay dirección
+    const mapsLink = document.getElementById('mapsLink');
+    const dir = 'Calle Ejemplo 123, Ciudad'; // cambia este texto al actualizar la dirección
+    mapsLink.href = 'https://www.google.com/maps/search/' + encodeURIComponent(dir);
+  </script>
+</body>
+</html>
