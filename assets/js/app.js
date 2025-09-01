@@ -7,7 +7,7 @@ let platos = [];
 async function cargarPlatos() {
   try {
     // Usamos ruta relativa para GitHub Pages
-    const res = await fetch("./assets/data/menu.json");
+    const res = await fetch("https://raw.githubusercontent.com/XaviLG/Carta-QR-Test/refs/heads/main/data/menu.json");
 
     // Si hay error 404 o JSON vacío
     if (!res.ok) {
