@@ -1,36 +1,37 @@
-// ============================
-// 1) CARGAR Y RENDERIZAR CARTA
-// ============================
-fetch("data/menu.json")
-  .then((response) => response.json())
-  .then((data) => {
-    const container = document.getElementById("items");
-    
-    // Generar el HTML dinámicamente
-    container.innerHTML = data
-      .map((plato) => `
-        <article class="card" data-cats="${plato.cats.join(",")}">
-          <div style="display:flex;gap:8px;align-items:baseline">
-            <h3>${plato.title}</h3>
-            <span class="price">${plato.price} €</span>
-          </div>
-          <p class="desc">${plato.desc}</p>
-          <div class="badges">
-            ${plato.badges.map((b) => `<span class="badge">${b}</span>`).join("")}
-          </div>
-        </article>
-      `)
-      .join("");
+// === CARGA DINÁMICA DE PLATOS DESDE JSON ===
+const itemsContainer = document.getElementById("items");
 
-    // IMPORTANTE: Reaplicar los filtros después de renderizar
+// Función para crear el HTML de un plato
+function crearPlatoHTML(plato) {
+  // Creamos los badges (etiquetas)
+  const badgesHTML = plato.badges.map(badge => `<span class="badge">${badge}</span>`).join("");
+
+  return `
+    <article class="card" data-cats="${plato.categorias.join(",")}">
+      <div style="display:flex;gap:8px;align-items:baseline">
+        <h3>${plato.nombre}</h3>
+        <span class="price">${plato.precio}</span>
+      </div>
+      <p class="desc">${plato.descripcion}</p>
+      <div class="badges">${badgesHTML}</div>
+    </article>
+  `;
+}
+
+// Cargar los platos desde carta.json
+fetch("assets/data/carta.json")
+  .then(response => response.json())
+  .then(data => {
+    // Generamos el HTML de todos los platos
+    const platosHTML = data.platos.map(plato => crearPlatoHTML(plato)).join("");
+    itemsContainer.innerHTML = platosHTML;
+
+    // Después de cargar, activamos los filtros
     activarFiltros();
   })
-  .catch((err) => console.error("Error cargando menu.json:", err));
+  .catch(error => console.error("Error al cargar la carta:", error));
 
-
-// ============================
-// 2) FUNCIÓN PARA ACTIVAR FILTROS
-// ============================
+// === FILTRO POR CATEGORÍA ===
 function activarFiltros() {
   const chips = document.querySelectorAll(".chip");
   const items = document.querySelectorAll(".card");
@@ -39,7 +40,6 @@ function activarFiltros() {
     chip.addEventListener("click", () => {
       chips.forEach((c) => c.setAttribute("aria-pressed", "false"));
       chip.setAttribute("aria-pressed", "true");
-
       const f = chip.dataset.filter;
       items.forEach((it) => {
         const show = f === "all" || it.dataset.cats.split(",").includes(f);
@@ -49,17 +49,10 @@ function activarFiltros() {
   });
 }
 
-
-// ============================
-// 3) AÑO AUTOMÁTICO FOOTER
-// ============================
+// === AÑO AUTOMÁTICO EN FOOTER ===
 document.getElementById("year").textContent = new Date().getFullYear();
 
-
-// ============================
-// 4) ENLACE A GOOGLE MAPS
-// ============================
+// === ENLACE A GOOGLE MAPS ===
 const mapsLink = document.getElementById("mapsLink");
-const dir = "Calle Ejemplo 123, Ciudad"; // cambia este texto al actualizar la dirección
+const dir = "Calle Ejemplo 123, Ciudad"; // cambia por tu dirección real
 mapsLink.href = "https://www.google.com/maps/search/" + encodeURIComponent(dir);
-
