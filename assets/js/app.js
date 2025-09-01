@@ -1,4 +1,4 @@
-// Filtro por categoría
+// Seleccionamos los chips (botones de categorías) y el contenedor donde van los platos
 const chips = document.querySelectorAll(".chip");
 const itemsContainer = document.getElementById("items");
 let platos = [];
@@ -6,7 +6,14 @@ let platos = [];
 // Cargar platos desde JSON
 async function cargarPlatos() {
   try {
+    // Usamos ruta relativa para GitHub Pages
     const res = await fetch("./assets/data/menu.json");
+
+    // Si hay error 404 o JSON vacío
+    if (!res.ok) {
+      throw new Error(`No se pudo cargar el archivo JSON: ${res.status}`);
+    }
+
     platos = await res.json();
     mostrarPlatos(platos);
   } catch (error) {
@@ -55,10 +62,10 @@ chips.forEach(chip => {
 // Año automático en el footer
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// Enlace a Google Maps dinámico
+// Enlace dinámico a Google Maps
 const mapsLink = document.getElementById("mapsLink");
 const dir = "Calle Ejemplo 123, Ciudad"; // cámbialo cuando actualices la dirección
 mapsLink.href = "https://www.google.com/maps/search/" + encodeURIComponent(dir);
 
-// Cargar todo al inicio
+// Iniciar carga de platos al abrir la página
 cargarPlatos();

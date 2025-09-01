@@ -1,26 +1,20 @@
 [
   {
-    "nombre": "Bruschetta",
-    "descripcion": "Pan tostado con tomate, ajo y albahaca fresca.",
-    "precio": "5.50",
+    "nombre": "Ensalada César",
+    "descripcion": "Lechuga fresca, pollo a la plancha y salsa césar.",
+    "precio": 7.5,
     "categoria": "entrantes"
   },
   {
-    "nombre": "Risotto de setas",
-    "descripcion": "Arroz cremoso con setas, parmesano y mantequilla.",
-    "precio": "12.00",
+    "nombre": "Paella Valenciana",
+    "descripcion": "Arroz, mariscos y pollo con un toque de azafrán.",
+    "precio": 12.5,
     "categoria": "principales"
   },
   {
-    "nombre": "Tiramisú",
-    "descripcion": "Clásico postre italiano con mascarpone y cacao.",
-    "precio": "6.00",
+    "nombre": "Tarta de Queso",
+    "descripcion": "Tarta casera con mermelada de frutos rojos.",
+    "precio": 4,
     "categoria": "postres"
-  },
-  {
-    "nombre": "Mojito",
-    "descripcion": "Ron, hierbabuena, lima, azúcar y soda.",
-    "precio": "7.00",
-    "categoria": "bebidas"
   }
 ]
