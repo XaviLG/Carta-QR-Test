@@ -1,0 +1,18 @@
+[
+  {
+    "id": "ensalada-casa",
+    "title": "Ensalada de la casa",
+    "desc": "Mezclum, tomate, queso fresco, vinagreta de limón.",
+    "price": "8.50",
+    "cats": ["entrantes","vegetariano"],
+    "badges": ["Vegetariano","Sin gluten"]
+  },
+  {
+    "id": "pollo-plancha",
+    "title": "Pollo a la plancha con arroz",
+    "desc": "Pechuga marinada, arroz jazmín.",
+    "price": "11.90",
+    "cats": ["principales","carne"],
+    "badges": ["Proteico"]
+  }
+]
