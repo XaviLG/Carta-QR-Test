@@ -19,7 +19,7 @@ function crearPlatoHTML(plato) {
 }
 
 // Cargar los platos desde carta.json
-fetch("assets/data/carta.json")
+fetch("assets/data/menu.json")
   .then(response => response.json())
   .then(data => {
     // Generamos el HTML de todos los platos
