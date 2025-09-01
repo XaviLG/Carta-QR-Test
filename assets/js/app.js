@@ -1,58 +1,64 @@
-// === CARGA DINÁMICA DE PLATOS DESDE JSON ===
+// Filtro por categoría
+const chips = document.querySelectorAll(".chip");
 const itemsContainer = document.getElementById("items");
+let platos = [];
 
-// Función para crear el HTML de un plato
-function crearPlatoHTML(plato) {
-  // Creamos los badges (etiquetas)
-  const badgesHTML = plato.badges.map(badge => `<span class="badge">${badge}</span>`).join("");
-
-  return `
-    <article class="card" data-cats="${plato.categorias.join(",")}">
-      <div style="display:flex;gap:8px;align-items:baseline">
-        <h3>${plato.nombre}</h3>
-        <span class="price">${plato.precio}</span>
-      </div>
-      <p class="desc">${plato.descripcion}</p>
-      <div class="badges">${badgesHTML}</div>
-    </article>
-  `;
+// Cargar platos desde JSON
+async function cargarPlatos() {
+  try {
+    const res = await fetch("assets/data/menu.json");
+    platos = await res.json();
+    mostrarPlatos(platos);
+  } catch (error) {
+    console.error("Error cargando platos:", error);
+    itemsContainer.innerHTML = `<p style="color:red;">Error al cargar la carta.</p>`;
+  }
 }
 
-// Cargar los platos desde carta.json
-fetch("assets/data/menu.json")
-  .then(response => response.json())
-  .then(data => {
-    // Generamos el HTML de todos los platos
-    const platosHTML = data.platos.map(plato => crearPlatoHTML(plato)).join("");
-    itemsContainer.innerHTML = platosHTML;
+// Mostrar los platos en el HTML
+function mostrarPlatos(lista) {
+  itemsContainer.innerHTML = "";
 
-    // Después de cargar, activamos los filtros
-    activarFiltros();
-  })
-  .catch(error => console.error("Error al cargar la carta:", error));
+  if (lista.length === 0) {
+    itemsContainer.innerHTML = `<p style="color:gray;">No hay platos en esta categoría.</p>`;
+    return;
+  }
 
-// === FILTRO POR CATEGORÍA ===
-function activarFiltros() {
-  const chips = document.querySelectorAll(".chip");
-  const items = document.querySelectorAll(".card");
+  lista.forEach(plato => {
+    const card = document.createElement("div");
+    card.classList.add("card");
+    card.setAttribute("data-cats", plato.categoria);
 
-  chips.forEach((chip) => {
-    chip.addEventListener("click", () => {
-      chips.forEach((c) => c.setAttribute("aria-pressed", "false"));
-      chip.setAttribute("aria-pressed", "true");
-      const f = chip.dataset.filter;
-      items.forEach((it) => {
-        const show = f === "all" || it.dataset.cats.split(",").includes(f);
-        it.style.display = show ? "flex" : "none";
-      });
-    });
+    card.innerHTML = `
+      <h3>${plato.nombre}</h3>
+      <p>${plato.descripcion}</p>
+      <span class="price">${plato.precio} €</span>
+    `;
+
+    itemsContainer.appendChild(card);
   });
 }
 
-// === AÑO AUTOMÁTICO EN FOOTER ===
+// Filtrar por categoría
+chips.forEach(chip => {
+  chip.addEventListener("click", () => {
+    chips.forEach(c => c.setAttribute("aria-pressed", "false"));
+    chip.setAttribute("aria-pressed", "true");
+
+    const f = chip.dataset.filter;
+    const filtrados = f === "all" ? platos : platos.filter(p => p.categoria === f);
+
+    mostrarPlatos(filtrados);
+  });
+});
+
+// Año automático en el footer
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// === ENLACE A GOOGLE MAPS ===
+// Enlace a Google Maps dinámico
 const mapsLink = document.getElementById("mapsLink");
-const dir = "Calle Ejemplo 123, Ciudad"; // cambia por tu dirección real
+const dir = "Calle Ejemplo 123, Ciudad"; // cámbialo cuando actualices la dirección
 mapsLink.href = "https://www.google.com/maps/search/" + encodeURIComponent(dir);
+
+// Cargar todo al inicio
+cargarPlatos();
