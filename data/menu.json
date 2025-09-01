@@ -1,18 +1,39 @@
-[
-  {
-    "id": "ensalada-casa",
-    "title": "Ensalada de la casa",
-    "desc": "Mezclum, tomate, queso fresco, vinagreta de limón.",
-    "price": "8.50",
-    "cats": ["entrantes","vegetariano"],
-    "badges": ["Vegetariano","Sin gluten"]
-  },
-  {
-    "id": "pollo-plancha",
-    "title": "Pollo a la plancha con arroz",
-    "desc": "Pechuga marinada, arroz jazmín.",
-    "price": "11.90",
-    "cats": ["principales","carne"],
-    "badges": ["Proteico"]
-  }
-]
+{
+  "platos": [
+    {
+      "nombre": "Ensalada de la casa",
+      "precio": "8,50 €",
+      "descripcion": "Mezclum, tomate, queso fresco, vinagreta de limón.",
+      "categorias": ["entrantes", "vegetariano"],
+      "badges": ["Vegetariano", "Sin gluten"]
+    },
+    {
+      "nombre": "Pollo a la plancha con arroz",
+      "precio": "11,90 €",
+      "descripcion": "Pechuga marinada, arroz jazmín y verduras salteadas.",
+      "categorias": ["principales", "carne"],
+      "badges": ["Proteico"]
+    },
+    {
+      "nombre": "Salmón al horno",
+      "precio": "14,50 €",
+      "descripcion": "Con patatas asadas y salsa de yogur y eneldo.",
+      "categorias": ["principales", "pescado"],
+      "badges": ["Sin gluten"]
+    },
+    {
+      "nombre": "Cheesecake casero",
+      "precio": "5,50 €",
+      "descripcion": "Base de galleta y coulis de frutos rojos.",
+      "categorias": ["postres"],
+      "badges": []
+    },
+    {
+      "nombre": "Limonada natural",
+      "precio": "2,50 €",
+      "descripcion": "Limón exprimido, azúcar y agua fría.",
+      "categorias": ["bebidas"],
+      "badges": []
+    }
+  ]
+}
