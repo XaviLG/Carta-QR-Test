@@ -6,7 +6,7 @@ let platos = [];
 // Cargar platos desde JSON
 async function cargarPlatos() {
   try {
-    const res = await fetch("assets/data/menu.json");
+    const res = await fetch("./assets/data/menu.json");
     platos = await res.json();
     mostrarPlatos(platos);
   } catch (error) {
