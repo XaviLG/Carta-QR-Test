@@ -1,39 +1,26 @@
-{
-  "platos": [
-    {
-      "nombre": "Ensalada de la casa",
-      "precio": "8,50 €",
-      "descripcion": "Mezclum, tomate, queso fresco, vinagreta de limón.",
-      "categorias": ["entrantes", "vegetariano"],
-      "badges": ["Vegetariano", "Sin gluten"]
-    },
-    {
-      "nombre": "Pollo a la plancha con arroz",
-      "precio": "11,90 €",
-      "descripcion": "Pechuga marinada, arroz jazmín y verduras salteadas.",
-      "categorias": ["principales", "carne"],
-      "badges": ["Proteico"]
-    },
-    {
-      "nombre": "Salmón al horno",
-      "precio": "14,50 €",
-      "descripcion": "Con patatas asadas y salsa de yogur y eneldo.",
-      "categorias": ["principales", "pescado"],
-      "badges": ["Sin gluten"]
-    },
-    {
-      "nombre": "Cheesecake casero",
-      "precio": "5,50 €",
-      "descripcion": "Base de galleta y coulis de frutos rojos.",
-      "categorias": ["postres"],
-      "badges": []
-    },
-    {
-      "nombre": "Limonada natural",
-      "precio": "2,50 €",
-      "descripcion": "Limón exprimido, azúcar y agua fría.",
-      "categorias": ["bebidas"],
-      "badges": []
-    }
-  ]
-}
+[
+  {
+    "nombre": "Bruschetta",
+    "descripcion": "Pan tostado con tomate, ajo y albahaca fresca.",
+    "precio": "5.50",
+    "categoria": "entrantes"
+  },
+  {
+    "nombre": "Risotto de setas",
+    "descripcion": "Arroz cremoso con setas, parmesano y mantequilla.",
+    "precio": "12.00",
+    "categoria": "principales"
+  },
+  {
+    "nombre": "Tiramisú",
+    "descripcion": "Clásico postre italiano con mascarpone y cacao.",
+    "precio": "6.00",
+    "categoria": "postres"
+  },
+  {
+    "nombre": "Mojito",
+    "descripcion": "Ron, hierbabuena, lima, azúcar y soda.",
+    "precio": "7.00",
+    "categoria": "bebidas"
+  }
+]
