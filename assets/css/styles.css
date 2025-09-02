@@ -133,12 +133,6 @@ header {
   background: linear-gradient(45deg, var(--accent), var(--accent-2));
   border-color: transparent;
 }
-
-.items {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  gap: 12px;
-}
 .card {
   background: var(--card);
   border: 1px solid #ffffff14;
@@ -147,11 +141,21 @@ header {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  width: 280px;
+  min-height: 180px;
+  justify-content: space-between;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 .card h3 {
   margin: 0;
+  margin-bottom: 6px;
   font-size: 1.05rem;
 }
+.card span {
+  font-weight: bold;
+  color: #f39c12;
+}
+
 .price {
   margin-left: auto;
   font-weight: 700;

@@ -1,89 +1,145 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Restaurante TestGitHubPages — Carta</title>
-  <meta name="description" content="Carta sencilla y responsive para restaurante." />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🍽️</text></svg>">
-  <link rel="stylesheet" href="assets/css/styles.css">
-</head>
-<body>
-  <header>
-    <nav class="nav container">
-      <div class="brand"><span class="dot"></span> Rest. Sabores</div>
-      <div class="links">
-        <a href="#carta">Carta</a>
-        <a href="#info">Información</a>
-        <a href="#contacto">Contacto</a>
-      </div>
-    </nav>
-  </header>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Restaurante TestGitHubPages — Carta</title>
+    <meta
+      name="description"
+      content="Carta sencilla y responsive para restaurante."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🍽️</text></svg>"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <!-- Swiper CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
 
-  <main class="container">
-    <section class="hero panel">
-      <h1>Carta</h1>
-      <p>Comida casera con ingredientes frescos. Actualiza este texto con tu descripción.</p>
-    </section>
-
-    <section id="carta" class="panel" style="margin-top:14px">
-      <div class="section-title">
-        <h2>Nuestra carta</h2>
-        <div class="chips" role="tablist" aria-label="Categorías de carta">
-          <button class="chip" role="tab" aria-pressed="true" data-filter="all">Todo</button>
-          <button class="chip" role="tab" data-filter="entrantes">Entrantes</button>
-          <button class="chip" role="tab" data-filter="principales">Principales</button>
-          <button class="chip" role="tab" data-filter="postres">Postres</button>
-          <button class="chip" role="tab" data-filter="bebidas">Bebidas</button>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="nav container">
+        <div class="brand"><span class="dot"></span> Rest. Sabores</div>
+        <div class="links">
+          <a href="#carta">Carta</a>
+          <a href="#info">Información</a>
+          <a href="#contacto">Contacto</a>
         </div>
-      </div>
+      </nav>
+    </header>
 
-      <div class="items" id="items">
-      </div>
-    </section>
+    <main class="container">
+      <section class="hero panel">
+        <h1>Carta</h1>
+        <p>
+          Comida casera con ingredientes frescos. Actualiza este texto con tu
+          descripción.
+        </p>
+      </section>
 
-    <section id="info" class="grid" style="margin-top:14px">
-      <div class="col-8">
-        <div class="panel">
-          <h2 style="margin:6px 0 12px">Sobre nosotros</h2>
-          <p style="margin-top:0;color:var(--muted)">Reemplaza este texto por la historia del restaurante, alergias, política de reservas, etc.</p>
-        </div>
-      </div>
-      <aside class="col-4 aside">
-        <div class="info">
-          <div>🕒</div>
-          <div>
-            <strong>Horario</strong>
-            <div>Lun–Jue: 13:00–16:00 / 20:00–23:00<br>Vie–Dom: 13:00–16:30 / 20:00–23:30</div>
+      <section id="carta" class="panel" style="margin-top: 14px">
+        <div class="section-title">
+          <h2>Nuestra carta</h2>
+          <div class="chips" role="tablist" aria-label="Categorías de carta">
+            <button
+              class="chip"
+              role="tab"
+              aria-pressed="true"
+              data-filter="all"
+            >
+              Todo
+            </button>
+            <button class="chip" role="tab" data-filter="entrantes">
+              Entrantes
+            </button>
+            <button class="chip" role="tab" data-filter="principales">
+              Principales
+            </button>
+            <button class="chip" role="tab" data-filter="postres">
+              Postres
+            </button>
+            <button class="chip" role="tab" data-filter="bebidas">
+              Bebidas
+            </button>
           </div>
         </div>
-        <div class="info">
-          <div>📍</div>
-          <div>
-            <strong>Dirección</strong>
-            <div>Calle Ejemplo 123, Ciudad</div>
-            <a href="#" id="mapsLink">Ver en Google Maps</a>
+
+        <!-- Carrusel -->
+        <div class="swiper">
+          <div class="swiper-wrapper" id="platos-container">
+            <!-- Aquí se inyectan las tarjetas desde JavaScript -->
+          </div>
+
+          <!-- Botones de navegación -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+
+          <!-- Paginación -->
+          <div class="swiper-pagination"></div>
+        </div>
+      </section>
+
+      <section id="info" class="grid" style="margin-top: 14px">
+        <div class="col-8">
+          <div class="panel">
+            <h2 style="margin: 6px 0 12px">Sobre nosotros</h2>
+            <p style="margin-top: 0; color: var(--muted)">
+              Reemplaza este texto por la historia del restaurante, alergias,
+              política de reservas, etc.
+            </p>
           </div>
         </div>
-        <div class="info" id="contacto">
-          <div>☎️</div>
-          <div>
-            <strong>Contacto</strong>
-            <div><a href="tel:+34900111222">+34 900 111 222</a></div>
-            <div><a href="mailto:reservas@restaurante.com">reservas@restaurante.com</a></div>
+        <aside class="col-4 aside">
+          <div class="info">
+            <div>🕒</div>
+            <div>
+              <strong>Horario</strong>
+              <div>
+                Lun–Jue: 13:00–16:00 / 20:00–23:00<br />Vie–Dom: 13:00–16:30 /
+                20:00–23:30
+              </div>
+            </div>
           </div>
-        </div>
-      </aside>
-    </section>
-  </main>
+          <div class="info">
+            <div>📍</div>
+            <div>
+              <strong>Dirección</strong>
+              <div>Calle Ejemplo 123, Ciudad</div>
+              <a href="#" id="mapsLink">Ver en Google Maps</a>
+            </div>
+          </div>
+          <div class="info" id="contacto">
+            <div>☎️</div>
+            <div>
+              <strong>Contacto</strong>
+              <div><a href="tel:+34900111222">+34 900 111 222</a></div>
+              <div>
+                <a href="mailto:reservas@restaurante.com"
+                  >reservas@restaurante.com</a
+                >
+              </div>
+            </div>
+          </div>
+        </aside>
+      </section>
+    </main>
 
-  <div class="cta">
-    <a href="tel:+34900111222" aria-label="Llamar para reservar">📞 Reservar</a>
-  </div>
+    <div class="cta">
+      <a href="tel:+34900111222" aria-label="Llamar para reservar"
+        >📞 Reservar</a
+      >
+    </div>
 
-  <footer class="container">
-    © <span id="year"></span> Rest. Sabores · Actualiza con tu nombre comercial
-  </footer>
-  <script src="assets/js/app.js" defer></script>
-</body>
+    <footer class="container">
+      © <span id="year"></span> Rest. Sabores · Actualiza con tu nombre
+      comercial
+    </footer>
+    <script src="assets/js/app.js" defer></script>
+  </body>
 </html>
