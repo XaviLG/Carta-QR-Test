@@ -52,5 +52,23 @@
     "descripcion": "Refresco sabor naranja",
     "precio": 2.50,
     "categoria": "bebidas"
+  },
+  {
+    "nombre": "Ceviche",
+    "descripcion": "Sopa ecuatoriana",
+    "precio": 5,
+    "categoria": "principales"
+  },
+  {
+    "nombre": "Encebollado",
+    "descripcion": "Sopa de pescado ecuatoriana",
+    "precio": 5,
+    "categoria": "principales"
+  },
+  {
+    "nombre": "Gallito",
+    "descripcion": "Refresco sabor original",
+    "precio": 2.50,
+    "categoria": "bebidas"
   }
 ]
