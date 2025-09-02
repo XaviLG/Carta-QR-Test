@@ -142,8 +142,7 @@ header {
   flex-direction: column;
   gap: 6px;
   width: 280px;
-  min-height: 400px;
-  justify-content: space-between;
+  min-height: 180px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 .card h3 {
