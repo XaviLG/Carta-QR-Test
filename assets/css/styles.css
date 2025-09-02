@@ -224,3 +224,12 @@ footer {
   text-align: center;
   padding: 26px 0;
 }
+.swiper {
+  width: 100%;
+  padding: 20px 0;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+}
