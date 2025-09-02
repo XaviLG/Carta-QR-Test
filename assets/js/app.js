@@ -63,7 +63,7 @@ function inicializarCarrusel() {
   if (swiper) swiper.destroy(true, true);
 
   swiper = new Swiper(".swiper", {
-    slidesPerView: 3,
+    slidesPerView: 6,
     spaceBetween: 20,
     navigation: {
       nextEl: ".swiper-button-next",
