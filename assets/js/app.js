@@ -64,7 +64,7 @@ function inicializarCarrusel() {
 
   swiper = new Swiper(".swiper", {
     slidesPerView: 3,
-    slidesPerGroup: true,
+    slidesPerGroupAuto: true,
     spaceBetween: 20,
     navigation: {
       nextEl: ".swiper-button-next",
