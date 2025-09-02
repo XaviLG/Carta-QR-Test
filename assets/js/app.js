@@ -64,6 +64,7 @@ function inicializarCarrusel() {
 
   swiper = new Swiper(".swiper", {
     slidesPerView: 3,
+    slidesPerGroup: true,
     spaceBetween: 20,
     navigation: {
       nextEl: ".swiper-button-next",
@@ -76,7 +77,7 @@ function inicializarCarrusel() {
     breakpoints: {
       320: { slidesPerView: 1 },  // Móvil
       768: { slidesPerView: 2 },  // Tablet
-      1024: { slidesPerView: 6 }, // Escritorio
+      1024: { slidesPerView: 3 }, // Escritorio
     },
   });
 }

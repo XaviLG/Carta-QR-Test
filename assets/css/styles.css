@@ -133,7 +133,7 @@ header {
   background: linear-gradient(45deg, var(--accent), var(--accent-2));
   border-color: transparent;
 }
-/*
+
 .card {
   background: var(--card);
   border: 1px solid #ffffff14;
@@ -145,13 +145,7 @@ header {
   width: 280px;
   min-height: 180px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-}*/
-
-.card{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap:12px}
-
+}
 .card h3 {
   margin: 0;
   margin-bottom: 6px;
