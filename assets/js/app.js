@@ -1,59 +1,65 @@
-// Seleccionamos los chips (botones de categorías) y el contenedor donde van los platos
+// Seleccionamos los chips (botones de categorías)
 const chips = document.querySelectorAll(".chip");
-const itemsContainer = document.getElementById("items");
+const platosContainer = document.getElementById("platos-container");
 let platos = [];
 let swiper;
 
 // Cargar platos desde JSON
 async function cargarPlatos() {
   try {
-    // Usamos ruta relativa para GitHub Pages
-    const res = await fetch("https://raw.githubusercontent.com/XaviLG/Carta-QR-Test/refs/heads/main/data/menu.json");
+    const res = await fetch(
+      "https://raw.githubusercontent.com/XaviLG/Carta-QR-Test/refs/heads/main/data/menu.json"
+    );
 
-    // Si hay error 404 o JSON vacío
     if (!res.ok) {
       throw new Error(`No se pudo cargar el archivo JSON: ${res.status}`);
     }
 
     platos = await res.json();
-    mostrarPlatos(platos);
+    mostrarPlatos("all"); // Mostrar todos los platos al inicio
   } catch (error) {
     console.error("Error cargando platos:", error);
-    itemsContainer.innerHTML = `<p style="color:red;">Error al cargar la carta.</p>`;
+    platosContainer.innerHTML = `<p style="color:red;">Error al cargar la carta.</p>`;
   }
 }
 
 // Mostrar los platos en el HTML
 function mostrarPlatos(categoria) {
-  const contenedor = document.getElementById("platos-container");
-  contenedor.innerHTML = "";
+  platosContainer.innerHTML = "";
 
-  // Filtramos por categoría
+  // Filtrar por categoría
   const platosFiltrados =
     categoria === "all"
       ? platos
       : platos.filter((plato) => plato.categoria === categoria);
 
+  // Si no hay platos, mostramos mensaje
+  if (platosFiltrados.length === 0) {
+    platosContainer.innerHTML = `<p style="color:gray;">No hay platos en esta categoría.</p>`;
+    inicializarCarrusel();
+    return;
+  }
+
   // Crear tarjetas dinámicas
   platosFiltrados.forEach((plato) => {
-    const card = document.createElement("div");
-    card.classList.add("swiper-slide");
-    card.innerHTML = `
+    const slide = document.createElement("div");
+    slide.classList.add("swiper-slide");
+    slide.innerHTML = `
       <div class="card">
         <h3>${plato.nombre}</h3>
         <p>${plato.descripcion}</p>
-        <span>${plato.precio} €</span>
+        <span class="price">${plato.precio} €</span>
       </div>
     `;
-    contenedor.appendChild(card);
+    platosContainer.appendChild(slide);
   });
 
-  // Reinicializar el carrusel cada vez que cambiamos los platos
+  // Reinicializar carrusel
   inicializarCarrusel();
 }
 
+// Inicializar / reiniciar carrusel
 function inicializarCarrusel() {
-  // Destruir el swiper anterior para evitar bugs
   if (swiper) swiper.destroy(true, true);
 
   swiper = new Swiper(".swiper", {
@@ -68,27 +74,25 @@ function inicializarCarrusel() {
       clickable: true,
     },
     breakpoints: {
-      320: { slidesPerView: 1 }, // Móvil
-      768: { slidesPerView: 2 }, // Tablet
+      320: { slidesPerView: 1 },  // Móvil
+      768: { slidesPerView: 2 },  // Tablet
       1024: { slidesPerView: 3 }, // Escritorio
     },
   });
 }
 
-// Filtrar por categoría
+// Activar filtros por categoría
 function activarFiltros() {
-  const botones = document.querySelectorAll(".chip");
+  chips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      // Desactivar todos los chips
+      chips.forEach((c) => c.setAttribute("aria-pressed", "false"));
 
-  botones.forEach((boton) => {
-    boton.addEventListener("click", () => {
-      // Quitar clase activa a todos los botones
-      botones.forEach((b) => b.setAttribute("aria-pressed", "false"));
-
-      // Activar el botón actual
-      boton.setAttribute("aria-pressed", "true");
+      // Activar el chip actual
+      chip.setAttribute("aria-pressed", "true");
 
       // Mostrar platos filtrados
-      mostrarPlatos(boton.dataset.filter);
+      mostrarPlatos(chip.dataset.filter);
     });
   });
 }
@@ -98,9 +102,9 @@ document.getElementById("year").textContent = new Date().getFullYear();
 
 // Enlace dinámico a Google Maps
 const mapsLink = document.getElementById("mapsLink");
-const dir = "Calle Ejemplo 123, Ciudad"; // cámbialo cuando actualices la dirección
+const dir = "Calle Ejemplo 123, Ciudad";
 mapsLink.href = "https://www.google.com/maps/search/" + encodeURIComponent(dir);
 
-// Iniciar carga de platos al abrir la página
+// Iniciar carga de platos y activar filtros
 cargarPlatos();
 activarFiltros();
