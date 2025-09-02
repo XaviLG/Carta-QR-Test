@@ -34,5 +34,23 @@
     "descripcion": "Refresco de Coca Cola normal",
     "precio": 2.50,
     "categoria": "bebidas"
+  },
+  {
+    "nombre": "Coca Cola Zero",
+    "descripcion": "Refresco de Coca Cola sin azucar",
+    "precio": 2.50,
+    "categoria": "bebidas"
+  },
+  {
+    "nombre": "Nestea",
+    "descripcion": "Refresco de Nestea",
+    "precio": 2.50,
+    "categoria": "bebidas"
+  },
+  {
+    "nombre": "Kas naranja",
+    "descripcion": "Refresco sabor naranja",
+    "precio": 2.50,
+    "categoria": "bebidas"
   }
 ]
