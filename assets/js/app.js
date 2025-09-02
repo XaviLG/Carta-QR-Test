@@ -64,6 +64,9 @@ function inicializarCarrusel() {
 
   swiper = new Swiper(".swiper", {
     slidesPerView: 3,
+    grid: {
+      rows: 2,
+    },
     slidesPerGroupAuto: true,
     spaceBetween: 20,
     navigation: {
