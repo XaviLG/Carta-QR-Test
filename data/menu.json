@@ -16,5 +16,23 @@
     "descripcion": "Tarta casera con mermelada de frutos rojos.",
     "precio": 4,
     "categoria": "postres"
+  },
+  {
+    "nombre": "Paella Valenciana 2",
+    "descripcion": "Arroz, mariscos y pollo con un toque de azafrán.",
+    "precio": 12.5,
+    "categoria": "principales"
+  },
+  {
+    "nombre": "Paella Valenciana 3",
+    "descripcion": "Arroz, mariscos y pollo con un toque de azafrán.",
+    "precio": 12.5,
+    "categoria": "principales"
+  },
+  {
+    "nombre": "Coca Cola",
+    "descripcion": "Refresco de Coca Cola normal",
+    "precio": 2.50,
+    "categoria": "bebidas"
   }
 ]
